@@ -1,0 +1,226 @@
+:root {
+  /* Brand Primary Colors */
+  --primary: #ac5219; /* Main brand color */
+  --primary-light: #c46a33;
+  --primary-dark: #8c3e0f;
+  --white: #ffffff;
+  --black: #000000;
+  --gray: #f8f9fa;
+  --dark-gray: #343a40;
+
+  /* Color Palette - Dawn */
+  --misty-blue: #C5D8E1;
+  --muted-lavender: #D8C3E2;
+  --ash-gray: #B0AFAF;
+
+  /* Color Palette - Morning */
+  --warm-cream: #F8E9C1;
+  --pale-lemon: #F4DA70;
+  --sky-blue: #B7DFF5;
+
+  /* Color Palette - Noon */
+  --bright-gold: #FFD54F;
+  --muted-peach: #F4C395;
+  --warm-sand: #E3C77F;
+
+  /* Color Palette - Early Afternoon */
+  --burnt-yellow: #E6A540;
+  --golden-beige: #F2E3B3;
+  --crisp-white: #FFFFFF;
+
+  /* Color Palette - Late Afternoon */
+  --rich-ochre: #C68B41;
+  --muted-olive: #8A9970;
+  --golden-brown: #D9A55B;
+
+  /* Color Palette - Sunset */
+  --sunset-orange: #FF8C42;
+  --muted-red-clay: #B55239;
+  --deep-coral: #E6735D;
+
+  /* Color Palette - Evening */
+  --rust-brown: #9E5E45;
+  --twilight-purple: #5B4B8A;
+  --deep-teal: #487A89;
+
+  /* Color Palette - Night */
+  --deep-indigo: #2C3057;
+  --cool-charcoal: #3B3C47;
+  --midnight-blue: #191F36;
+
+  /* Color Palette - Late Night */
+  --pitch-black: #101118;
+  --dark-navy: #1A1F38;
+  --steel-gray: #4A4E57;
+
+  /* Typography */
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* Base styling */
+  color: var(--dark-gray);
+  background-color: var(--white);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+button, .btn {
+  border-radius: 4px;
+  /* border: 1px solid transparent; */
+  /* padding: 0.6em 1.2em; */
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  /* background-color: var(--primary); */
+  /* color: var(--white); */
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none !important;
+}
+
+button:hover, .btn:hover {
+  /* background-color: var(--primary-light);
+  border-color: var(--primary-light); */
+}
+button:focus,
+button:focus-visible {
+  outline: 2px solid var(--primary-light);
+}
+
+.card {
+  padding: 1.5em;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+#app {
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+/* Navbar Styling */
+.navbar {
+  background-color: var(--white);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Product Card Styling */
+.product-card {
+  border: none;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  object-fit: cover;
+  height: 250px;
+}
+
+.product-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.product-price {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Color Selection Styling */
+.color-option {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 5px;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.color-option.selected {
+  border-color: var(--primary);
+}
+
+.bg-primary {
+  background-color: var(--primary)!important;
+}
+
+/* Button Variants */
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-light);
+  border-color: var(--primary-light);
+}
+
+.btn-outline-primary {
+  color: var(--primary);
+  border-color: var(--primary);
+  background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  .product-card img {
+    height: 200px;
+  }
+}
