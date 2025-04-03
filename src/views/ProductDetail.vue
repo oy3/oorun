@@ -3,11 +3,13 @@ import { ref, computed, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useProductStore } from '../stores/products';
 import { useCartStore } from '../stores/cart';
+import { useUserStore } from '../stores/user';
 
 const route = useRoute();
 const router = useRouter();
 const productStore = useProductStore();
 const cartStore = useCartStore();
+const userStore = useUserStore();
 
 // Get product ID from route params
 const productId = computed(() => route.params.id);
@@ -62,6 +64,22 @@ const getColorName = (hex) => {
 // Change active image
 const setActiveImage = (index) => {
   activeImageIndex.value = index;
+};
+
+// Toggle product in wishlist
+const toggleWishlist = () => {
+  if (product.value) {
+    if (isInWishlist(product.value.id)) {
+      userStore.removeFromWishlist(product.value.id);
+    } else {
+      userStore.addToWishlist(product.value.id);
+    }
+  }
+};
+
+// Check if product is in wishlist
+const isInWishlist = (productId) => {
+  return userStore.getUserWishlist.includes(productId);
 };
 </script>
 
@@ -151,9 +169,18 @@ const setActiveImage = (index) => {
             </div>
           </div>
           
-          <!-- Add to Cart Button -->
-          <div class="d-grid gap-2">
+          <!-- Add to Cart and Wishlist Buttons -->
+          <div class="d-grid gap-2 mb-3">
             <button @click="addToCart" class="btn btn-primary btn-lg">Add to Cart</button>
+          </div>
+          <div class="d-flex justify-content-center">
+            <button 
+              @click="toggleWishlist" 
+              class="btn btn-lg" 
+              :class="isInWishlist(product.id) ? 'btn-danger' : 'btn-outline-danger'">
+              <i class="bi" :class="isInWishlist(product.id) ? 'bi-heart-fill' : 'bi-heart'"></i>
+              {{ isInWishlist(product.id) ? 'Remove from Wishlist' : 'Add to Wishlist' }}
+            </button>
           </div>
         </div>
       </div>

@@ -2,9 +2,11 @@
 import { ref, onMounted, computed } from 'vue';
 import { useProductStore } from '../stores/products';
 import { useCartStore } from '../stores/cart';
+import { useUserStore } from '../stores/user';
 
 const productStore = useProductStore();
 const cartStore = useCartStore();
+const userStore = useUserStore();
 
 const products = ref([]);
 const selectedCategory = ref('all');
@@ -47,6 +49,20 @@ const addToCart = (product) => {
   const defaultColor = product.availableColors[0]?.hex || '';
   cartStore.addToCart(product, 1, defaultColor);
   alert(`${product.name} added to cart!`);
+};
+
+// Function to toggle product in wishlist
+const toggleWishlist = (productId) => {
+  if (isInWishlist(productId)) {
+    userStore.removeFromWishlist(productId);
+  } else {
+    userStore.addToWishlist(productId);
+  }
+};
+
+// Function to check if product is in wishlist
+const isInWishlist = (productId) => {
+  return userStore.getUserWishlist.includes(productId);
 };
 </script>
 
@@ -106,8 +122,14 @@ const addToCart = (product) => {
                 <router-link :to="`/shop/${product.category}/${product.id}`" class="btn btn-outline-primary flex-grow-1 me-2">
                   View Details
                 </router-link>
-                <button @click="addToCart(product)" class="btn btn-primary">
+                <button @click="addToCart(product)" class="btn btn-primary me-2">
                   <i class="bi bi-cart-plus"></i>
+                </button>
+                <button 
+                  @click="toggleWishlist(product.id)" 
+                  class="btn" 
+                  :class="isInWishlist(product.id) ? 'btn-danger' : 'btn-outline-danger'">
+                  <i class="bi" :class="isInWishlist(product.id) ? 'bi-heart-fill' : 'bi-heart'"></i>
                 </button>
               </div>
             </div>

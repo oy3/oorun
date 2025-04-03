@@ -42,7 +42,7 @@ onMounted(() => {
               <img src="/images/men-category.jpg" alt="Men's Collection" class="img-fluid rounded">
               <div class="category-overlay rounded">
                 <h3 class="category-title">Men's Collection</h3>
-                <router-link to="/shop/men" class="btn btn-light rounded-0">Shop Men</router-link>
+                <router-link to="/shop/men" class="btn btn-primary rounded-0">Shop Men</router-link>
               </div>
             </div>
           </div>
@@ -51,7 +51,7 @@ onMounted(() => {
               <img src="/images/women-category.jpg" alt="Women's Collection" class="img-fluid rounded">
               <div class="category-overlay rounded">
                 <h3 class="category-title">Women's Collection</h3>
-                <router-link to="/shop/women" class="btn btn-light rounded-0">Shop Women</router-link>
+                <router-link to="/shop/women" class="btn btn-primary rounded-0">Shop Women</router-link>
               </div>
             </div>
           </div>
