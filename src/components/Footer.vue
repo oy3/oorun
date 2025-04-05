@@ -40,7 +40,7 @@ const currentYear = new Date().getFullYear();
           <form>
             <div class="input-group mb-3">
               <input type="email" class="form-control" placeholder="Your email" aria-label="Your email" aria-describedby="subscribe-btn">
-              <button class="btn btn-primary" type="button" id="subscribe-btn">Subscribe</button>
+              <button class="btn btn-secondary" type="button" id="subscribe-btn">Subscribe</button>
             </div>
           </form>
         </div>

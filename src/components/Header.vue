@@ -1,28 +1,39 @@
 <script setup>
 import { RouterLink } from 'vue-router';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useCartStore } from '../stores/cart';
+import { useThemeStore } from '../stores/theme';
 
 const cartStore = useCartStore();
+const themeStore = useThemeStore();
 const showMobileMenu = ref(false);
 
 const toggleMobileMenu = () => {
   showMobileMenu.value = !showMobileMenu.value;
 };
+
+const toggleTheme = () => {
+  themeStore.toggleTheme();
+  themeStore.saveThemePreference();
+};
+
+onMounted(() => {
+  themeStore.initTheme();
+});
 </script>
 
 <template>
   <header class="navbar navbar-expand-lg navbar-light">
     <div class="container">
-      <RouterLink class="navbar-brand" to="/">
+      <a href="#" class="navbar-brand" @click.prevent="toggleTheme">
         <div class="logo-container">
-          <img src="/images/sun-logo.svg" alt="Òòrùn Logo" class="brand-logo" />
-          <!-- <div class="brand-text">
-            <span class="brand-name">Òòrùn</span>
-            <span class="brand-subtitle">by OYE x DTY</span>
-          </div> -->
+          <img 
+            :src="themeStore.isDarkMode ? '/images/moon-logo.svg' : '/images/sun-logo.svg'" 
+            :alt="themeStore.isDarkMode ? 'Dark Mode' : 'Light Mode'" 
+            class="brand-logo" 
+          />
         </div>
-      </RouterLink>
+      </a>
 
       <button 
         class="navbar-toggler" 
@@ -76,6 +87,7 @@ const toggleMobileMenu = () => {
 
 <style scoped>
 .logo-container {
+  width: 100px;
   display: flex;
   align-items: center;
   line-height: 1.2;
