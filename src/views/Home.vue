@@ -39,7 +39,7 @@ onMounted(() => {
         <div class="row g-4">
           <div class="col-md-6">
             <div class="category-card position-relative">
-              <img src="/images/men-category.jpg" alt="Men's Collection" class="img-fluid rounded">
+              <img src="/images/men-category.jpeg" alt="Men's Collection" class="img-fluid rounded">
               <div class="category-overlay rounded">
                 <h3 class="category-title">Men's Collection</h3>
                 <router-link to="/shop/men" class="btn btn-primary rounded-0">Shop Men</router-link>
